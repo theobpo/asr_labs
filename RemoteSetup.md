@@ -11,7 +11,7 @@ There are three main options for working on the labs and assignment remotely or 
 1.  Set up the [remote desktop service](http://computing.help.inf.ed.ac.uk/remote-desktop)
 2.  Connect to a remote desktop
 3.  Open a terminal on the remote desktop
-4.  Run `ssh s1234567.lab.inf.ed.ac.uk` (replacing the student ID with your own). Please try `ssh student.compute.inf.ed.ac.uk` instead, if the former does not work for you.
+4.  Run `ssh s1234567.lab.inf.ed.ac.uk` (replacing the student ID with your own). Please try `ssh -l <<USERNAME>> student.compute.inf.ed.ac.uk` instead, if the former does not work for you. Check [step 6 of the next section for setting up port forwarding](#informatics-vpn-strongly-not-recommended)
 5.  Run the [commands for setting up the environment](README.md#commands-for-setting-up-the-python-environment)
 
 After the above is finished, every time you log in, you only need to run the following commands.
@@ -30,10 +30,11 @@ If the token is not working, `jupyter notebook password` lets you set a password
 1.  Set up the [informatics VPN](https://computing.help.inf.ed.ac.uk/openvpn) 
 2.  Connect to the VPN
 3.  Open a terminal
-4.  Run `ssh s1234567@s1234567.lab.inf.ed.uk` (please try `ssh s1234567@student.compute.inf.ed.ac.uk` or `ssh student.ssh.inf.ed.ac.uk` if the former does not work for you).
+4.  Run `ssh s1234567@s1234567.lab.inf.ed.uk` (please try `ssh s1234567@student.compute.inf.ed.ac.uk` or `ssh -l <<USERNAME>> student.ssh.inf.ed.ac.uk` if the former does not work for you).
 5.  Enter your DICE password
-6.  Run `ssh student.compute`
-7.  Run the [commands for setting up the environment](README.md#commands-for-setting-up-the-python-environment)
+6.  Setup port forwarding. Since jupyter runs on a local port, you should forward this port from the DICE machine to your local one. To do this add the `-L 8888:localhost:8888` in the ssh command above. E.g. `ssh -l <<USERNAME>> -L 8888:localhost:8888 student.ssh.inf.ed.ac.uk`.
+7.  Run `ssh student.compute`
+8.  Run the [commands for setting up the environment](README.md#commands-for-setting-up-the-python-environment)
 
 From now on, every time you log in, you only need to run the following commands. 
 
